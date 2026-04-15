@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Item Card</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media-query.css" />
+  </head>
+  <body>
+    <div
+      class="card-wrapper"
+      id="cardWrapper"
+      data-priority="Medium"
+      data-overdue="false"
+    >
+      <article
+        data-testid="test-todo-card"
+        id="todoCardArticle"
+        aria-label="Todo item card"
+      >
+        <div class="card-top">
+          <div class="checkbox-wrap">
+            <label for="todo-complete" class="sr-only">Mark as complete</label>
+            <input
+              type="checkbox"
+              id="todo-complete"
+              data-testid="test-todo-complete-toggle"
+              aria-label="Mark task as complete"
+            />
+          </div>
+          <div class="title-block">
+            <h2
+              class="todo-title"
+              data-testid="test-todo-title"
+              id="todo-title"
+            >
+              Design the onboarding flow
+            </h2>
+          </div>
+        </div>
+
+        <div class="badges">
+          <div
+            class="priority-indicator-compact"
+            data-testid="test-todo-priority-indicator"
+          >
+            <span class="priority-dot" id="priorityDot"></span>
+            <span class="priority-text" id="priorityTextBadge">Medium</span>
+          </div>
+          <div class="status-control-wrap">
+            <span class="status-label">Status</span>
+            <select
+              id="statusSelect"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Todo status"
+            >
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="desc-section">
+          <p data-testid="test-todo-description" id="todoDescriptionText">
+            Create wireframes and a clickable prototype for the new user
+            onboarding experience.
+          </p>
+          <button
+            id="expandToggleBtn"
+            class="expand-toggle"
+            data-testid="test-todo-expand-toggle"
+            aria-expanded="false"
+            aria-controls="todoDescriptionText"
+          >
+            <span>Expand</span> ⌵
+          </button>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="time-row">
+          <div class="time-item">
+            <span class="time-icon" aria-hidden="true">📅</span>
+            <time
+              data-testid="test-todo-due-date"
+              id="todo-due-date"
+              datetime="2026-04-20T18:00:00Z"
+              >Due Apr 20, 2026</time
+            >
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <span
+              data-testid="test-todo-time-remaining"
+              id="todo-time-remaining"
+              class="ok"
+              aria-live="polite"
+              >Calculating…</span
+            >
+            <span
+              id="overdueIndicator"
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator-hidden"
+              style="
+                display: none;
+                font-size: 0.7rem;
+                padding: 2px 8px;
+                border-radius: 40px;
+              "
+              >⚠️ Overdue</span
+            >
+          </div>
+        </div>
+
+        <ul data-testid="test-todo-tags" aria-label="Task tags">
+          <li data-testid="test-todo-tag-work"># work</li>
+          <li data-testid="test-todo-tag-urgent"># urgent</li>
+          <li data-testid="test-todo-tag-design"># design</li>
+        </ul>
+
+        <div class="actions">
+          <button
+            class="btn"
+            data-testid="test-todo-edit-button"
+            id="editButton"
+          >
+            ✏️ Edit
+          </button>
+          <button
+            class="btn"
+            data-testid="test-todo-delete-button"
+            id="deleteButton"
+          >
+            🗑 Delete
+          </button>
+        </div>
+
+        <div
+          id="editFormContainer"
+          data-testid="test-todo-edit-form"
+          style="display: none"
+        >
+          <div class="edit-form">
+            <div class="form-group">
+              <label for="editTitleInput">Title</label>
+              <input
+                type="text"
+                id="editTitleInput"
+                data-testid="test-todo-edit-title-input"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editDescInput">Description</label>
+              <textarea
+                id="editDescInput"
+                rows="3"
+                data-testid="test-todo-edit-description-input"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="editPrioritySelect">Priority</label>
+              <select
+                id="editPrioritySelect"
+                data-testid="test-todo-edit-priority-select"
+              >
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editDueDate">Due Date</label>
+              <input
+                type="datetime-local"
+                id="editDueDate"
+                data-testid="test-todo-edit-due-date-input"
+              />
+            </div>
+            <div class="form-actions">
+              <button class="btn-save" data-testid="test-todo-save-button">
+                Save
+              </button>
+              <button class="btn-cancel" data-testid="test-todo-cancel-button">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
